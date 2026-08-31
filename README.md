@@ -355,10 +355,6 @@ A proposta é substituir sistemas de tickets básicos por uma solução capaz de
 
 <div align="center">
 
-### 🎫 TicketSystem
-
-**Atendimento organizado. Gestão eficiente.**
-
 Desenvolvido com **Node.js** e **discord.js**.
 
 </div>
