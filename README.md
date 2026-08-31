@@ -1,100 +1,364 @@
-# TicketSystem Discord Bot
+<div align="center">
 
-Sistema de tickets para Discord desenvolvido com discord.js, com painéis configuráveis, atendimento privado, transcripts, avaliações, logs, estatísticas e embeds modernos para servidores de Minecraft.
+# 🎫 TicketSystem
 
-Bot profissional de tickets para Discord, focado exclusivamente em atendimento e suporte.
+### Sistema completo e moderno de tickets para Discord
 
-## Como usar
+Um bot desenvolvido com **discord.js** para gerenciamento de atendimentos e suporte, com foco em organização, automação e experiência da equipe e dos usuários.
 
-1. Instale as dependências:
+![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Discord.js](https://img.shields.io/badge/discord.js-v14-5865F2?style=for-the-badge&logo=discord&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![License](https://img.shields.io/badge/License-Private-lightgrey?style=for-the-badge)
+
+</div>
+
+---
+
+## 📖 Sobre o projeto
+
+O **TicketSystem** é um sistema profissional de tickets desenvolvido especialmente para servidores do Discord, com suporte a comunidades e servidores de **Minecraft**.
+
+O projeto centraliza todo o fluxo de atendimento em um único bot, desde a abertura do ticket até seu encerramento, incluindo **transcripts, avaliações, estatísticas, rankings, logs e gerenciamento completo pela equipe**.
+
+O sistema também possui painéis configuráveis e armazenamento persistente, permitindo que grande parte das configurações seja realizada diretamente pelo Discord.
+
+---
+
+## ✨ Funcionalidades
+
+### 🎫 Sistema de Tickets
+
+- Abertura de tickets através de painel interativo;
+- Modal personalizado para criação do atendimento;
+- Canais privados para cada ticket;
+- ID incremental e permanente para identificação;
+- Nick do Minecraft, assunto e motivo do atendimento;
+- Status individual de cada ticket;
+- Renomeação dos canais;
+- Adição e remoção de participantes.
+
+### 👥 Gerenciamento da Equipe
+
+- Sistema de **claim** de atendimento;
+- Liberação de tickets;
+- Transferência entre atendentes;
+- Solicitação de resposta;
+- Solicitação de fechamento;
+- Alertas automáticos de inatividade;
+- Histórico individual dos atendentes.
+
+### ⭐ Avaliações
+
+Após o encerramento, o usuário pode avaliar o atendimento recebido.
+
+- Avaliação de **1 a 5 estrelas**;
+- Comentário opcional;
+- Média de avaliações por atendente;
+- Histórico de avaliações;
+- Métricas integradas às estatísticas.
+
+### 📊 Estatísticas
+
+O sistema registra automaticamente métricas dos atendimentos, incluindo:
+
+- Total de tickets criados;
+- Tickets abertos e encerrados;
+- Tickets por usuário;
+- Tickets atendidos por membro da equipe;
+- Tempo médio de atendimento;
+- Tempo médio para primeira resposta;
+- Estatísticas individuais;
+- Rankings de atendentes;
+- Histórico e busca através do ID do ticket.
+
+### 📄 Transcripts
+
+Ao finalizar um atendimento, o bot gera automaticamente um **transcript em HTML**.
+
+O arquivo é:
+
+1. Gerado no encerramento;
+2. Armazenado localmente;
+3. Vinculado ao registro do ticket;
+4. Enviado para o canal de transcripts configurado.
+
+Os arquivos ficam armazenados em:
+
+```text
+output/transcripts/
+```
+
+### 📋 Logs
+
+Eventos importantes do sistema podem ser registrados automaticamente em um canal configurável, facilitando o acompanhamento das ações realizadas pela equipe.
+
+---
+
+## 🛠️ Tecnologias
+
+| Tecnologia | Utilização |
+| :--- | :--- |
+| **Node.js** | Ambiente de execução |
+| **discord.js** | Integração com a API do Discord |
+| **SQLite** | Persistência dos tickets e configurações |
+| **HTML** | Geração dos transcripts |
+| **JavaScript** | Desenvolvimento do sistema |
+
+---
+
+## 🚀 Instalação
+
+### 1. Instale as dependências
+
+Clone o projeto e execute:
 
 ```bash
 npm install
 ```
 
-2. Crie o arquivo `.env` a partir de `.env.example` e preencha:
+### 2. Configure as variáveis de ambiente
+
+Crie um arquivo `.env` utilizando o `.env.example` como referência:
 
 ```env
-# Obrigatório para ligar o bot.
+# Token utilizado para iniciar o bot.
 DISCORD_TOKEN=token_do_bot
 
-# Obrigatório para registrar os slash commands.
-CLIENT_ID=id_da_aplicação
+# ID da aplicação. Necessário para registrar os slash commands.
+CLIENT_ID=id_da_aplicacao
 
-# Opcional: registra o /ticket mais rápido em um servidor de teste.
+# Opcional.
+# Permite registrar os comandos imediatamente em um servidor de desenvolvimento.
 GUILD_ID=id_do_servidor_de_teste
 ```
 
-3. Registre os comandos slash:
+> [!IMPORTANT]
+> Nunca publique seu `DISCORD_TOKEN` no GitHub ou compartilhe o arquivo `.env`.
+
+### 3. Registre os comandos
 
 ```bash
 npm run register
 ```
 
-4. Inicie o bot:
+### 4. Inicie o TicketSystem
 
 ```bash
 npm start
 ```
 
-## Configuração no Discord
+Pronto! O bot estará disponível no Discord após conectar-se corretamente.
 
-Para enviar o painel de abertura de tickets, use comando de mensagem:
+---
 
-```text
-!ticket
-!ticket #canal-do-painel
-```
+## ⚙️ Configuração
 
-O bot tenta apagar a mensagem `!ticket` automaticamente. Para isso, ele precisa
-da permissão `Gerenciar Mensagens` no canal onde o comando for usado.
+As principais configurações do TicketSystem são realizadas **diretamente pelo Discord**.
 
-As configurações ficam em um painel único:
+Utilize:
 
 ```text
 /ticket config
 ```
 
-Nesse painel você configura categoria, cargo da equipe, canal de logs, canal de
-transcripts, aparência, textos, prefixo dos canais e inatividade.
+Através desse painel é possível configurar:
 
-Essas configurações não ficam no `.env`; tudo é salvo em `data/tickets.db`.
+- Categoria dos tickets;
+- Cargo responsável pelos atendimentos;
+- Canal de logs;
+- Canal de transcripts;
+- Aparência dos painéis;
+- Textos utilizados pelo sistema;
+- Prefixo dos canais;
+- Sistema de inatividade.
 
-O transcript é gerado como arquivo HTML em `output/transcripts`, salvo no ticket
-e enviado para o canal configurado em `/ticket config`.
+As configurações são armazenadas em:
 
-Depois de mudar comandos slash no código, rode `npm run register` novamente para
-o Discord receber as novas opções de configuração.
+```text
+data/tickets.db
+```
 
-Se aparecer `Missing Access (403)` ao registrar:
+Portanto, configurações específicas de cada servidor **não precisam ser adicionadas ao `.env`**.
 
-- confira se o `GUILD_ID` é o ID do servidor correto;
-- confira se o bot está instalado nesse servidor;
-- confira se o `CLIENT_ID` é da mesma aplicação do `DISCORD_TOKEN`;
-- ou deixe `GUILD_ID` vazio para registrar o comando globalmente.
+---
 
-O painel abre um modal com nick do Minecraft, assunto e motivo. O ticket criado
-usa a cabeça do jogador em:
+## 🎨 Painel de Tickets
+
+Para enviar o painel responsável pela abertura dos atendimentos, utilize:
+
+```text
+!ticket
+```
+
+Para enviar em um canal específico:
+
+```text
+!ticket #canal-do-painel
+```
+
+O bot tentará remover automaticamente a mensagem utilizada para executar o comando.
+
+> [!NOTE]
+> Para apagar a mensagem `!ticket`, o bot precisa possuir a permissão **Gerenciar Mensagens** no respectivo canal.
+
+---
+
+## 📝 Abertura de Ticket
+
+Ao iniciar um novo atendimento, um modal solicita informações como:
+
+```text
+Nick do Minecraft
+Assunto
+Motivo do atendimento
+```
+
+Após o envio, um canal privado é criado automaticamente para o usuário e para a equipe responsável.
+
+### 🧱 Integração com Minecraft
+
+A cabeça do jogador é carregada automaticamente utilizando o nick informado:
 
 ```text
 https://mc-heads.net/head/<nick>
 ```
 
-## Funcionalidades
+Isso permite personalizar os embeds do atendimento com a skin correspondente ao jogador.
 
-- abertura com modal e canal privado;
-- identificação permanente por ID incremental;
-- claim, liberação e transferência de atendimento;
-- adicionar/remover participantes, renomear e status;
-- solicitação de resposta e solicitação de fechamento;
-- fechamento com avaliação e transcript HTML;
-- avaliação de 1 a 5 estrelas com comentário opcional;
-- histórico por usuário e busca por ID;
-- estatísticas gerais, estatísticas individuais e rankings de atendentes;
-- alertas de inatividade;
-- logs configuráveis para eventos importantes.
+---
 
-Dados persistentes ficam em `data/tickets.db`. Transcripts ficam em `output/transcripts`.
+## 💾 Armazenamento
 
-Ative no Developer Portal do Discord os intents `Server Members Intent` e
-`Message Content Intent` para registrar primeira resposta e métricas.
+O TicketSystem mantém os dados importantes de forma persistente.
+
+```text
+data/
+└── tickets.db
+
+output/
+└── transcripts/
+    ├── ticket-0001.html
+    ├── ticket-0002.html
+    └── ...
+```
+
+### Banco de dados
+
+```text
+data/tickets.db
+```
+
+Armazena informações relacionadas a:
+
+- Tickets;
+- Usuários;
+- Atendentes;
+- Avaliações;
+- Estatísticas;
+- Configurações;
+- Histórico dos atendimentos.
+
+### Transcripts
+
+```text
+output/transcripts/
+```
+
+Armazena os transcripts HTML gerados durante o encerramento dos tickets.
+
+---
+
+## 🔐 Intents necessários
+
+No **Discord Developer Portal**, habilite:
+
+```text
+Server Members Intent
+Message Content Intent
+```
+
+Esses intents são utilizados pelo sistema para funcionalidades como registro de primeira resposta e determinadas métricas dos atendimentos.
+
+---
+
+## 🔄 Atualizando Slash Commands
+
+Sempre que houver alterações na estrutura dos slash commands, execute novamente:
+
+```bash
+npm run register
+```
+
+Isso fará com que as alterações sejam enviadas ao Discord.
+
+> [!TIP]
+> Durante o desenvolvimento, configure `GUILD_ID`. Comandos registrados diretamente em um servidor costumam ser atualizados mais rapidamente que comandos globais.
+
+---
+
+## ⚠️ Missing Access (403)
+
+Caso apareça o erro:
+
+```text
+Missing Access (403)
+```
+
+ao registrar os comandos, verifique:
+
+1. Se `GUILD_ID` corresponde ao servidor correto;
+2. Se o bot está instalado nesse servidor;
+3. Se `CLIENT_ID` pertence à mesma aplicação do `DISCORD_TOKEN`;
+4. Se a aplicação possui as permissões necessárias.
+
+Como alternativa, deixe:
+
+```env
+GUILD_ID=
+```
+
+para realizar o registro global dos comandos.
+
+---
+
+## 📁 Estrutura de dados
+
+```text
+TicketSystem/
+├── data/
+│   └── tickets.db
+│
+├── output/
+│   └── transcripts/
+│
+├── .env
+├── .env.example
+├── package.json
+└── ...
+```
+
+> [!WARNING]
+> Não envie o arquivo `.env` para repositórios públicos. Certifique-se de adicioná-lo ao `.gitignore`.
+
+---
+
+## 🎯 Objetivo
+
+O TicketSystem foi desenvolvido para oferecer uma experiência de suporte **simples para o usuário e completa para a equipe**.
+
+A proposta é substituir sistemas de tickets básicos por uma solução capaz de centralizar todo o processo de atendimento:
+
+**Abertura → Atendimento → Gerenciamento → Encerramento → Transcript → Avaliação → Estatísticas**
+
+---
+
+<div align="center">
+
+### 🎫 TicketSystem
+
+**Atendimento organizado. Gestão eficiente.**
+
+Desenvolvido com **Node.js** e **discord.js**.
+
+</div>
