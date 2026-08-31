@@ -1,0 +1,22 @@
+{
+  "name": "ticket-system",
+  "version": "1.0.0",
+  "description": "Bot profissional de tickets de suporte para Discord.",
+  "main": "src/bot.js",
+  "scripts": {
+    "start": "node src/bot.js",
+    "register": "node src/register-commands.js"
+  },
+  "keywords": [
+    "discord",
+    "tickets",
+    "support"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "discord.js": "^14.27.0",
+    "dotenv": "^17.4.2"
+  }
+}
